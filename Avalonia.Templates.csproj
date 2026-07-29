@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>12.1.0.2</PackageVersion>
+    <PackageVersion>12.1.1</PackageVersion>
     <PackageId>Avalonia.Templates</PackageId>
     <Title>Avalonia Templates</Title>
     <Description>Templates for creating Avalonia applications and libraries.</Description>
     <PackageTags>dotnet-new;templates;avalonia</PackageTags>
-    <PackageProjectUrl>https://github.com/AvaloniaUI/avalonia-dotnet-templates</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/AvaloniaUI/avalonia-dotnet-templates.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/AvaloniaUI/Avalonia.Templates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AvaloniaUI/Avalonia.Templates.git</RepositoryUrl>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
