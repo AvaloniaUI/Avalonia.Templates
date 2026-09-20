@@ -13,6 +13,7 @@ module Program =
         AppBuilder
             .Configure<App>()
             .WithInterFont()
+            .UsePlatformDetect()
 //-:cnd:noEmit
 #if DEBUG
             .WithDeveloperTools()
