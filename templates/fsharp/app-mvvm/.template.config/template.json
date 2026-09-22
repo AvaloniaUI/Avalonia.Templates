@@ -71,7 +71,7 @@
       "description": "The target version of Avalonia NuGet packages.",
       "datatype": "text",
       "replaces": "AvaloniaVersionTemplateParameter",
-      "defaultValue": "12.1.2"
+      "defaultValue": "12.1.3"
     },
     "RemoveViewLocator": {
       "type": "parameter",
