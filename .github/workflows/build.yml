@@ -1,0 +1,59 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  templates:
+    name: Build
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Use .NET SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.x
+
+      - name: Pack Templates
+        run: dotnet pack Avalonia.Templates.csproj --output artifacts/NuGet --verbosity normal
+
+      - name: Install Templates
+        run: dotnet new install artifacts/NuGet/*.nupkg
+
+      - name: Install Workloads
+        run: dotnet workload install android ios wasm-tools
+
+      - name: Run Tests
+        working-directory: tests
+        run: ./build-test.ps1 -NuGetSource https://release-manager-internal.avaloniaui.net/nuget/avalonia/index.json
+
+      - name: Upload NuGet Package
+        uses: actions/upload-artifact@v7
+        with:
+          name: NuGet
+          path: artifacts/NuGet
+
+      - name: Upload Test Binlogs
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: TestBinlog
+          path: binlog
+          if-no-files-found: ignore
