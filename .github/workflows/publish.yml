@@ -1,0 +1,76 @@
+name: Publish
+
+# Publishes the NuGet package built by a previous Build workflow run on main, without rebuilding it.
+
+on:
+  workflow_dispatch:
+    inputs:
+      run-id:
+        description: ID of the Build workflow run to publish. Defaults to the run for the latest commit on main.
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  publish:
+    name: Publish NuGet Package
+    if: github.repository == 'AvaloniaUI/Avalonia.Templates' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: release
+    steps:
+      - name: Find Build Run
+        id: run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ inputs.run-id }}
+        run: |
+          if [[ -z "$RUN_ID" ]]; then
+            RUN_ID=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow build.yml --commit "$GITHUB_SHA" --status success \
+              --json databaseId,event --jq 'map(select(.event == "push" or .event == "workflow_dispatch")) | .[0].databaseId // empty')
+            if [[ -z "$RUN_ID" ]]; then
+              echo "::error::No successful Build run found for $GITHUB_SHA on main."
+              exit 1
+            fi
+          fi
+
+          run=$(gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --json workflowName,headBranch,headSha,event,conclusion,url)
+          echo "$run" | jq .
+          if ! echo "$run" | jq -e '.workflowName == "Build" and .headBranch == "main" and (.event == "push" or .event == "workflow_dispatch") and .conclusion == "success"' > /dev/null; then
+            echo "::error::Run $RUN_ID is not a successful Build run on main."
+            exit 1
+          fi
+          echo "id=$RUN_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Use .NET SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.x
+
+      - name: Download NuGet Package
+        uses: actions/download-artifact@v7
+        with:
+          name: NuGet
+          path: NuGet
+          run-id: ${{ steps.run.outputs.id }}
+          github-token: ${{ github.token }}
+
+      - name: Push to Feed
+        env:
+          NUGET_FEED_URL: ${{ vars.RELEASE_MANAGER_UPLOAD_URL }}
+          NUGET_API_KEY: ${{ secrets.RELEASE_MANAGER_API_KEY }}
+        run: |
+          ls -l NuGet
+          dotnet nuget push "NuGet/*.nupkg" \
+            --source "$NUGET_FEED_URL" \
+            --api-key "$NUGET_API_KEY"

@@ -20,6 +20,7 @@ env:
 jobs:
   templates:
     name: Build
+    if: github.repository == 'AvaloniaUI/Avalonia.Templates'
     runs-on: windows-latest
     timeout-minutes: 120
     steps:
