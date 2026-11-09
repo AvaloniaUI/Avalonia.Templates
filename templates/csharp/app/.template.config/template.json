@@ -47,7 +47,7 @@
       "description": "The target version of Avalonia NuGet packages.",
       "datatype": "text",
       "replaces": "AvaloniaVersionTemplateParameter",
-      "defaultValue": "12.1.5"
+      "defaultValue": "12.1.6"
     },
     "HostIdentifier": {
       "type": "bind",
