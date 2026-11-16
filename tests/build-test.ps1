@@ -47,21 +47,23 @@ function New-ItemCase($template, $name, [switch]$HasCodeBehind) {
 }
 
 $builds = @(
+    New-Case "avalonia.app"   "AvaloniaApp"   "C#" "f"   "net11.0"
     New-Case "avalonia.app"   "AvaloniaApp"   "C#" "f"   "net10.0"
-    New-Case "avalonia.app"   "AvaloniaApp"   "C#" "av"  "12.1.6"
+    New-Case "avalonia.app"   "AvaloniaApp"   "C#" "av"  "12.2.0"
 
-    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "f"   "net10.0" -Items
-    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "f"   "net8.0"
-    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "av"  "12.1.6"
+    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "f"   "net11.0" -Items
+    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "f"   "net10.0"
+    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "av"  "12.2.0"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "m"   "ReactiveUI"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "m"   "CommunityToolkit"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "rvl" "true"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "C#" "rvl" "false"
 
+    New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "f"   "net11.0"
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "f"   "net10.0"
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "cpm" "true"
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "cpm" "false"
-    New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "av"  "12.1.6"
+    New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "av"  "12.2.0"
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "m"   "ReactiveUI"
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "m"   "CommunityToolkit"
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "rvl" "true"
@@ -71,19 +73,21 @@ $builds = @(
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "page" "DrawerPage"
     New-Case "avalonia.xplat" "AvaloniaXplat" "C#" "page" "NavigationPage"
 
+    New-Case "avalonia.app"   "AvaloniaApp"   "F#" "f"   "net11.0"
     New-Case "avalonia.app"   "AvaloniaApp"   "F#" "f"   "net10.0"
-    New-Case "avalonia.app"   "AvaloniaApp"   "F#" "av"  "12.1.6"
+    New-Case "avalonia.app"   "AvaloniaApp"   "F#" "av"  "12.2.0"
 
-    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "f"   "net10.0" -Items
-    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "f"   "net8.0"
-    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "av"  "12.1.6"
+    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "f"   "net11.0" -Items
+    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "f"   "net10.0"
+    New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "av"  "12.2.0"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "m"   "ReactiveUI"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "m"   "CommunityToolkit"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "rvl" "true"
     New-Case "avalonia.mvvm"  "AvaloniaMvvm"  "F#" "rvl" "false"
 
+    New-Case "avalonia.xplat" "AvaloniaXplat" "F#" "f"   "net11.0"
     New-Case "avalonia.xplat" "AvaloniaXplat" "F#" "f"   "net10.0"
-    New-Case "avalonia.xplat" "AvaloniaXplat" "F#" "av"  "12.1.6"
+    New-Case "avalonia.xplat" "AvaloniaXplat" "F#" "av"  "12.2.0"
     New-Case "avalonia.xplat" "AvaloniaXplat" "F#" "m"   "ReactiveUI"
     New-Case "avalonia.xplat" "AvaloniaXplat" "F#" "m"   "CommunityToolkit"
     New-Case "avalonia.xplat" "AvaloniaXplat" "F#" "rvl" "true"

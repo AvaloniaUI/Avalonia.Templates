@@ -7,7 +7,7 @@
         <!-- Avalonia packages -->
         <!-- Important: keep version in sync! -->
         <PackageVersion Include="Avalonia" Version="AvaloniaVersionTemplateParameter" />
-        <PackageVersion Include="Avalonia.Themes.Fluent" Version="AvaloniaVersionTemplateParameter" />
+        <PackageVersion Include="Avalonia.Themes.Fluent2" Version="AvaloniaVersionTemplateParameter" />
         <PackageVersion Include="Avalonia.Fonts.Inter" Version="AvaloniaVersionTemplateParameter" />
         <PackageVersion Include="Avalonia.Desktop" Version="AvaloniaVersionTemplateParameter" />
         <PackageVersion Include="Avalonia.iOS" Version="AvaloniaVersionTemplateParameter" />
@@ -15,12 +15,12 @@
         <PackageVersion Include="Avalonia.Android" Version="AvaloniaVersionTemplateParameter" />
         <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3" />
         <!--#if (ReactiveUIToolkitChosen) -->
-        <PackageVersion Include="ReactiveUI.Avalonia" Version="12.0.3" />
+        <PackageVersion Include="ReactiveUI.Avalonia" Version="12.1.7" />
         <!--#elif (CommunityToolkitChosen)-->
 
         <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2" />
         <!--#endif -->
 
-        <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.15" />
+        <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.2.0.2" />
     </ItemGroup>
 </Project>
