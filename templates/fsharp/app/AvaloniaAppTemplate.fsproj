@@ -14,7 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="AvaloniaVersionTemplateParameter" />
     <PackageReference Include="Avalonia.Desktop" Version="AvaloniaVersionTemplateParameter" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="AvaloniaVersionTemplateParameter" />
+    <PackageReference Include="Avalonia.Themes.Fluent2" Version="AvaloniaVersionTemplateParameter" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="AvaloniaVersionTemplateParameter" />
     <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3">
       <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>

@@ -30,7 +30,7 @@ jobs:
       - name: Use .NET SDK
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 10.x
+          dotnet-version: 11.x
 
       - name: Pack Templates
         run: dotnet pack Avalonia.Templates.csproj --output artifacts/NuGet --verbosity normal

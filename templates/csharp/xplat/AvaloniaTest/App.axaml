@@ -20,6 +20,6 @@
 <!--#endif-->
 
     <Application.Styles>
-        <FluentTheme />
+        <Fluent2Theme />
     </Application.Styles>
 </Application>

@@ -10,11 +10,7 @@ namespace AvaloniaAppTemplate.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     [ObservableProperty]
-#if (UsePartialProperties)
     public partial string Greeting { get; set; } = "Welcome to Avalonia!";
-#else
-    private string _greeting = "Welcome to Avalonia!";
-#endif
 }
 #elif (ReactiveUIToolkitChosen)
 public class MainViewModel : ViewModelBase
